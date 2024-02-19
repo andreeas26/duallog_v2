@@ -1,18 +1,17 @@
-# The duallog package
+# The duallog_v2 package
 
-Python package to enable simultaneous logging to console and logfile.
+Python package to enable simultaneous logging to console and logfile. Added the option to use a configuration file for both handlers.
 
-![](./duallog_screenshot.png)
-[Duallog screenshot](https://github.com/acschaefer/duallog/blob/master/duallog_screenshot.png)
+
 
 ## How to install duallog?
 
-You can install duallog using [pip](https://www.w3schools.com/python/python_pip.asp), or you can install from source.
+You can install duallog_v2  from source.
 Below you find instructions for both ways.
 
 ### Installation via pip
 
-In the terminal, run `pip install duallog`.
+TBD
 
 ### Installation from source
 
@@ -32,14 +31,16 @@ import duallog
 import logging
 
 # Set up dual logging and tell duallog where to store the logfiles.
-duallog.setup('logtest')
+duallog.setup("logtest")
 
 # Generate some log messages.
-logging.debug('Debug messages are only sent to the logfile.')
-logging.info('Info messages are not shown on the console, too.')
-logging.warning('Warnings appear both on the console and in the logfile.')
-logging.error('Errors get the same treatment.')
-logging.critical('And critical messages, of course.')
+logging.debug("Debug messages are only sent to the logfile.")
+logging.info("Info messages are not shown on the console, too.")
+logging.warning("Warnings appear both on the console and in the logfile.")
+logging.error("Errors get the same treatment.")
+logging.critical("And critical messages, of course.")
 ```
 
-The output of this program is shown in the screenshot at the top of this page.
+## TODO
+
+- Add tests with `pytest`
