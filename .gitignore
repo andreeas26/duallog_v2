@@ -3,5 +3,5 @@ logtest/
 .vscode
 build/
 dist/
-duallog\.egg-info/
+duallog_v2\.egg-info/
 *.log
