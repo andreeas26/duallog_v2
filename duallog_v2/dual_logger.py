@@ -55,6 +55,7 @@ class DualLogger:
 
         self.logs_dir = pt.Path(logs_dir)
         self.min_level = min_level
+        self.config_file = config_file
 
         # Create a folder for the logfiles.
         if not self.logs_dir.exists():
@@ -72,7 +73,7 @@ class DualLogger:
         self.main_logger.setLevel(logging.DEBUG)
 
         # Construct the name of the logfile.
-        t = datetime.datetime.now()
+        t = datetime.now()
         file_name = FILE_NAME_FORMAT.format(year=t.year, month=t.month, day=t.day,
             hour=t.hour, minute=t.minute, second=t.second)
         file_name = self.logs_dir/file_name
@@ -96,6 +97,10 @@ class DualLogger:
         self.logs_dir.mkdir(parents=True, exist_ok=True)
         config.fileConfig(config_file, defaults={"logs_dir": self.logs_dir, "date": datetime.now().strftime("%Y-%m-%d-%H-%M-%S")})
         self.main_logger = logging.getLogger()
+        self.console_handler = self.main_logger.handlers[0]
+        self.console_formatter = self.console_handler.formatter
+        self.file_handler = self.main_logger.handlers[1]
+        self.file_formatter = self.file_handler.formatter
     
     def get_logger(self, name:str):
         return self.main_logger.getChild(name)
